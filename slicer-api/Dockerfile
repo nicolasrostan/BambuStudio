@@ -1,7 +1,8 @@
-FROM node:20-bookworm-slim
+FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      curl git ca-certificates \
+      curl ca-certificates git \
+      nodejs npm \
       libgtk-3-0t64 libglib2.0-0t64 libgl1 libegl1 \
       libgstreamer1.0-0 libgstreamer-gl1.0-0 \
       libsecret-1-0 libosmesa6 libcurl4t64 libdbus-1-3 \
