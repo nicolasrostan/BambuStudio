@@ -46,7 +46,7 @@ jobs:
       - name: Stage build artifacts for Docker context
         run: |
           mkdir -p slicer-api/stage/bin slicer-api/stage/lib
-          cp build/src/BambuStudio slicer-api/stage/bin/bambu-studio
+          cp build/src/bambu-studio slicer-api/stage/bin/bambu-studio
           cp build/src/libav*.so* slicer-api/stage/lib/ 2>/dev/null || true
           cp build/src/libsw*.so* slicer-api/stage/lib/ 2>/dev/null || true
 
