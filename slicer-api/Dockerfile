@@ -14,7 +14,10 @@ ARG SLICER_API_REPO=https://github.com/maziggy/orca-slicer-api.git
 ARG SLICER_API_BRANCH=bambuddy/profile-resolver
 RUN git clone --branch ${SLICER_API_BRANCH} --depth 1 \
       ${SLICER_API_REPO} /app \
-    && cd /app && npm ci --production \
+    && cd /app \
+    && npm ci \
+    && npm run build \
+    && npm prune --production \
     && apt-get purge -y git && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
@@ -36,4 +39,4 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 --start-period=30s \
   CMD curl -f http://localhost:3000/health || exit 1
 
-CMD ["node", "server.js"]
+CMD ["node", "dist/index.js"]
