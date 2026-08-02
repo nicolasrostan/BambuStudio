@@ -30,7 +30,8 @@ COPY slicer-api/stage/lib/ /app/squashfs-root/lib/
 
 ENV LD_LIBRARY_PATH=/app/squashfs-root/lib
 
-RUN chmod +x /app/squashfs-root/AppRun /app/squashfs-root/bin/bambu-studio
+RUN chmod +x /app/squashfs-root/AppRun /app/squashfs-root/bin/bambu-studio \
+    && mkdir -p /app/data
 
 WORKDIR /app
 ENV NODE_ENV=production
